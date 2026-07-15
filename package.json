@@ -1,0 +1,70 @@
+{
+  "name": "structured-logger-kit",
+  "version": "1.0.0",
+  "description": "Modern structured logger for Node.js — JSON/pretty output, request IDs, OpenTelemetry hooks, cloud logging formats, and file rotation.",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts --clean --sourcemap",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run typecheck && npm run test && npm run build"
+  },
+  "keywords": [
+    "logger",
+    "logging",
+    "structured-logging",
+    "json",
+    "pretty",
+    "request-id",
+    "opentelemetry",
+    "otel",
+    "cloud-logging",
+    "file-rotation",
+    "typescript",
+    "nodejs",
+    "pino",
+    "observability"
+  ],
+  "author": "Anil Kumar <anilachary67@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theinfyark/structured-logger-kit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/theinfyark/structured-logger-kit/issues"
+  },
+  "homepage": "https://github.com/theinfyark/structured-logger-kit#readme",
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/anilachary"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.30",
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.3"
+  }
+}
