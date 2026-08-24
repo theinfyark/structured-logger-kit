@@ -15,6 +15,11 @@ import {
   createStdoutDestination,
 } from "./destination.js";
 
+function resolveLevel(raw: unknown): LogLevel {
+  if (typeof raw === "string" && raw in LEVELS) return raw as LogLevel;
+  return "info";
+}
+
 function serializeError(err: unknown): LogRecord["err"] | undefined {
   if (!err) return undefined;
   if (err instanceof Error) {
@@ -48,7 +53,7 @@ export class Logger {
 
   constructor(options: LoggerOptions = {}) {
     this.name = options.name;
-    this.level = options.level ?? (process.env.LOG_LEVEL as LogLevel) ?? "info";
+    this.level = resolveLevel(options.level ?? process.env.LOG_LEVEL);
     this.format =
       options.format ??
       (process.env.NODE_ENV === "production" ? "json" : "pretty");

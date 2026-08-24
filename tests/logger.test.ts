@@ -26,6 +26,24 @@ describe("createLogger", () => {
     expect(row.time).toMatch(/^\d{4}-/);
   });
 
+  it("defaults unknown LOG_LEVEL to info", () => {
+    const lines: string[] = [];
+    const log = createLogger({
+      level: "verbose" as never,
+      format: "json",
+      stdout: false,
+      destination: {
+        write(line) {
+          lines.push(line);
+        },
+      },
+    });
+    log.debug("nope");
+    log.info("yes");
+    expect(lines).toHaveLength(1);
+    expect(JSON.parse(lines[0]!).message).toBe("yes");
+  });
+
   it("respects log level", () => {
     const { log, lines } = createTestLogger();
     const quiet = createLogger({
