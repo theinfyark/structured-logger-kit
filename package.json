@@ -1,7 +1,7 @@
 {
   "name": "structured-logger-kit",
   "version": "1.1.0",
-  "description": "Modern structured logger for Node.js — JSON/pretty output, request IDs, OpenTelemetry hooks, cloud logging formats, and file rotation.",
+  "description": "Modern structured logger for Node.js \u2014 JSON/pretty output, request IDs, OpenTelemetry hooks, cloud logging formats, and file rotation.",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -72,5 +72,12 @@
     "tsup": "^8.5.0",
     "typescript": "^5.8.3",
     "vitest": "^3.2.3"
+  },
+  "overrides": {
+    "esbuild": ">=0.28.1",
+    "nanoid": ">=3.3.18",
+    "postcss": ">=8.5.23",
+    "browserslist": ">=4.28.7",
+    "brace-expansion": ">=2.1.4"
   }
 }
